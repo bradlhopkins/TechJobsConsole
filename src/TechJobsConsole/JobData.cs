@@ -43,13 +43,18 @@ namespace TechJobsConsole
             // load data, if not already loaded
             LoadData();
 
+            string lowerColumn = column.ToLower();
+            string lowerValue = value.ToLower();
+
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                string aValueLower = aValue.ToLower();
+
+                if (aValueLower.Contains(lowerValue))
                 {
                     jobs.Add(row);
                 }
@@ -58,7 +63,7 @@ namespace TechJobsConsole
             return jobs;
         }
 
-        public static List<Dictionary<string, string>> FindByValue(string searchItem)
+        public static List<Dictionary<string, string>> FindByValue(string searchTerm)
         {
             // load data, if not already loaded
             LoadData();
@@ -71,7 +76,7 @@ namespace TechJobsConsole
                 {
                     var data = row.Value;
 
-                    if (data.Contains(searchItem))
+                    if (data.Contains(searchTerm))
                     {
                         if (result.Contains(listing))
                         {
