@@ -72,21 +72,16 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> listing in AllJobs)
             {
-                foreach (var row  in listing)
-                {
-                    var data = row.Value;
+                foreach (string row  in listing.Keys)
+                { 
 
-                    if (data.Contains(searchTerm))
-                    {
-                        if (result.Contains(listing))
-                        {
-                            continue;
-                        }
-                        else
+                    
+                        if (!result.Contains(listing))
+                        
                         {
                             result.Add(listing);
                         }
-                    }
+                    
                 }
             }
 
